@@ -23,6 +23,9 @@ export default withStyles({
         margin: "2em"
     },
     media: {
-        minHeight: "250px"
+        minHeight: "250px",
+        // minHeight: "400px",
+        // height: "80%",
+        // width: "100%"
     }
 })(MovieCard);

@@ -10,7 +10,10 @@ class MoviesListContainer extends Component {
     }
 
     componentDidMount(){
-        axios.get('https://api.themoviedb.org/3/search/movie?api_key=735a3154d1f2d1edc582718bfa70cce9&query=Spiderman')
+        
+        // axios.get('https://api.themoviedb.org/3/search/movie?api_key=735a3154d1f2d1edc582718bfa70cce9&query=Spiderman')
+        axios.get('https://api.themoviedb.org/3/discover/movie?api_key=735a3154d1f2d1edc582718bfa70cce9&language=en-US')
+
         .then(res =>{
             console.log(res);
             const movieData = res.data.results
