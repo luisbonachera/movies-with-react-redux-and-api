@@ -1,8 +1,7 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component } from 'react';
 import axios from 'axios';
 import List from '../components/List';
-import {AppBar, Typography, Toolbar} from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import AppNav from '../components/AppNav';
 
 class MoviesListContainer extends Component {
 
@@ -24,25 +23,14 @@ class MoviesListContainer extends Component {
     }
     render ()
     {
-        const { classes } = this.props;
         const { movieData } = this.state
         return (
             <>
-            <AppBar className={classes.NavColor}position="static">
-                <Toolbar variant="dense">
-                    <Typography variant="h6" component="p">
-                        MovieApp
-                    </Typography>
-                </Toolbar>
-            </AppBar>
+            <AppNav />
             <List moviedata={movieData}/>
             </>
         );
     }
 }
 
-export default withStyles({
-    NavColor:{
-        backgroundColor: '#EF5350'
-    }
-}) (MoviesListContainer);
+export default MoviesListContainer;
