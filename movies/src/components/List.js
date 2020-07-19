@@ -12,8 +12,7 @@ function List({ moviedata }) {
                 {moviedata.map((movie, index) => {
                     let url = "https://image.tmdb.org/t/p/original";
                     console.log(url)
-                    let movieIndex = "";
-                    return <MovieCard to={`/movie-info/${movie.id}`}key ={index} title={movie.original_title} image={`${url}${movie.poster_path}`}/>
+                    return <MovieCard to={`/movie-info/${movie.id}`} key ={index} title={movie.original_title} image={`${url}${movie.poster_path}`}/>
                         // <li key={index}>
                         //     {movie.original_title}
                         //     {/* <a href={movie.url}>URL</a> */}
