@@ -10,14 +10,14 @@ function AppNav(props) {
             <Toolbar variant="dense">
                 <Typography variant="h6" component="p">
                     MovieApp
-                    </Typography>
+                </Typography>
             </Toolbar>
         </AppBar>
     );
 }
 
 export default withStyles({
-    NavColor:{
+    NavColor: {
         backgroundColor: '#EF5350'
     }
 })(AppNav)
