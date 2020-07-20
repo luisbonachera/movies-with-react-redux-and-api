@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Card, CardMedia, CardContent, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-function MovieCard({ title, classes, image, to }) {
+function MovieCard({ title, classes, image, to='' }) {
     return (
         <Card className={classes.item}>
             <CardMedia className={classes.media} image={image} />
@@ -17,13 +17,14 @@ function MovieCard({ title, classes, image, to }) {
 
 export default withStyles({
     item: {
-        minWidth: "300px",
+        minWidth: "350px",
         textAlign: "center",
         // boxSizing: "border-box",
-        margin: "2em"
+        margin: "2em",
+        paddin: '1em'
     },
     media: {
-        minHeight: "250px",
+        minHeight: "350px",
         // minHeight: "400px",
         // height: "80%",
         // width: "100%"

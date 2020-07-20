@@ -16,7 +16,7 @@ class MoviesListContainer extends Component {
 
         .then(res =>{
             console.log(res);
-            const movieData = res.data.results
+            const movieData = res.data.results;
             // this.setState({movieData: movieData}); la primera es el state y la segunda es la const
             this.setState({movieData});
 
