@@ -30,6 +30,7 @@ class MoviesListContainer extends Component {
         return (
             <>
             <AppNav />
+            
             <List moviedata={movieData}/>
             </>
         );

@@ -52,6 +52,7 @@ class MovieInfoContainer extends Component {
         // let url = movieDataDetails ? `https://image.tmdb.org/t/p/original${movieDataDetails.backdrop_path}` : '';
         let url = movieDataDetails ? `${process.env.REACT_APP_MOVIES_IMAGE_URL}${movieDataDetails.backdrop_path}` : '';
         console.log(url)
+        console.log(movieDataDetails.homepage)
         // const movieUrlImage = movieDataDetails.poster_path;
         // let apiKey = "?api_key=735a3154d1f2d1edc582718bfa70cce9"
         // console.log('url: ',url + movieUrlImage)
@@ -62,6 +63,8 @@ class MovieInfoContainer extends Component {
                     movieImage={url? url : ''}
                     title={movieTitle}
                     description={"hola"}
+                    homePage={movieDataDetails.homepage}
+                    overview={movieDataDetails.overview}
                 />
                 {/* <h1> MovieInfo</h1>
                 <p>ID: {match.params.movieIndex}</p> */}

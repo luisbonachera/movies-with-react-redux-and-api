@@ -6,7 +6,6 @@ import MovieInfoContainer from './containers/MovieInfoContainer';
 
 const Routes = () => {
     return (
-
         <Switch>
             <Route exact path='/' component={Home}/>
             <Route exact path='/movies' component={MoviesListContainer}/>
