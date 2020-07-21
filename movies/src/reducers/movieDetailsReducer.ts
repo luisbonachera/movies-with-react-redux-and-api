@@ -6,6 +6,9 @@ const initialState: IMovieDetails = {
     title: '',
     original_title: '',
     poster_path: '',
+    homepage: '',
+    overview: '',
+    backdrop_path: '',
 }
 // const initialState : ICity[] = []; //esto es sin el archivo cities.json
 

@@ -1,5 +1,6 @@
 import { TAction } from '../actions/actionsTypes';
 import { IMovie } from '../interfaces/interfaceIMovie';
+import { IMovieDiscover } from '../interfaces/interfaceIMovieDiscover';
 
 const initialState: any = [{
     id: '',
@@ -9,13 +10,12 @@ const initialState: any = [{
 }]
 
 
-export const moviesReducer = (
-    // state: ICity[] = initialState, //esto es sin el archivo cities.json
+export const moviesDiscoverReducer = (
     state: IMovie[] = initialState,
     action: TAction
 ): IMovie[] => {
-    if (action.type === "SET_MOVIES") {
-        return action.movies;
+    if (action.type === "SET_MOVIES_DISCOVER") {
+        return action.moviesDiscover;
     }
 
     return state;

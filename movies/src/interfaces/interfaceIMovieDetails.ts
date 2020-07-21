@@ -3,4 +3,7 @@ export interface IMovieDetails {
     title: string;
     original_title: string;
     poster_path: string;
+    homepage: string;
+    overview: string;
+    backdrop_path: string;
 }
