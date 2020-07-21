@@ -1,6 +1,6 @@
 import React from 'react';
 import MovieCard from './MovieCard';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 
 import { Paper, Grid, Typography, withStyles } from '@material-ui/core';
