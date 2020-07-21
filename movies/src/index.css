@@ -1,11 +1,12 @@
 /* ---------- */
+
 * {
   padding: 0;
   margin: 0;
 }
 
-html{ 
-  height:100%; 
+html {
+  height: 100%;
 }
 
 body {
@@ -20,57 +21,67 @@ body {
 
 a {
   text-decoration: none;
-  color:black;
+  color: black;
   size: 4em;
 }
 
 button {
-  color:white;
-  background-color:rgb(220, 53, 69);
+  color: white;
+  background-color: rgb(220, 53, 69);
   border: none;
   border-radius: 4px;
   padding: 1em;
 }
 
-h1{
+h1 {
   padding-bottom: 1em;
 }
 
 .container-flex {
-  min-height:100%;
+  min-height: 100%;
 }
 
-.anchor:before { 
-  display: block; 
-  content: " "; 
-  margin-top: -50px; 
-  height: 50px; 
-  visibility: hidden; 
+.anchor:before {
+  display: block;
+  content: " ";
+  margin-top: -50px;
+  height: 50px;
+  visibility: hidden;
 }
 
 .poster {
- max-width: 50%;
- min-width: 230px;
- border-radius: 4px;
- border:none;
+  max-width: 50%;
+  min-width: 230px;
+  border-radius: 4px;
+  border: none;
 }
 
-.movierow img{
+.movierow {
+  margin-bottom: -225px;
+}
+
+.movierow img {
   border-radius: 6px;
-  border:none;
+  border: none;
   height: 60%;
   border-radius: 16px 16px 16px 16px;
 }
+
+.movierow img:hover {
+  box-shadow: 20px 20px 3px grey;
+}
+
 .movierow a:hover {
   text-decoration: none;
   color: black;
-  text-shadow: 2px 2px 3px grey, 2px 2px 3px grey;
+  text-shadow: 20px 20px 3px grey;
+  /* text-shadow: 2px 2px 3px grey, 2px 2px 3px grey; */
 }
 
-.footer{
+.footer {
   background-color: black;
   text-align: center;
-  color:white;
+  color: white;
   height: 14em;
 }
 
@@ -79,9 +90,23 @@ h1{
   margin: 2em auto;
 }
 
+.search-button {
+  font-size: 12px;
+  font-family: Verdana, Helvetica;
+  /* font-weight: bold; */
+  color: white;
+  background: #343a40;
+}
 
+.web-title { 
+padding: 15px;
+}
 
-
+.custom-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* ---------- */
 
 /* body {
@@ -106,5 +131,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 } */
-
-

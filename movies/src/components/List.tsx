@@ -89,7 +89,8 @@ const List: React.FC<IProps & IPropsGlobal> = props => {
                     console.log(movies.data.results);
                     // this.setState({movieData: movieData}); la primera es el state y la segunda es la const
                     setErrorSearch(false)
-                    props.setMovies(movies.data.results)
+                    props.setMovies(movies.data.results);
+                    setInputMovie("");
                     // setMoviesHooks(movies.data.results);
                     // setIstherMovies(true);
                 }
@@ -102,7 +103,7 @@ const List: React.FC<IProps & IPropsGlobal> = props => {
             });
     };
 
-    let url = "https://image.tmdb.org/t/p/w300";
+    let url = "https://image.tmdb.org/t/p/w500";
     // `https://image.tmdb.org/t/p/w500${this.props.movie.poster_path}`
     // React.useEffect(() => { }, [isThereMovies]);
 
@@ -213,61 +214,86 @@ const List: React.FC<IProps & IPropsGlobal> = props => {
         //                             <a className='nav-link' href='/#favs'><i className='fas fa-star'></i> Favoritas</a>
         //                         </li>
         //                         <li>
-                                   /* {/* <Dropdown key={genres.id}>
-                        <Dropdown.Toggle variant='danger' id='dropdown-basic'> Géneros </Dropdown.Toggle>
-                          <Dropdown.Menu> {genres.map(genre=> (
-                            <Dropdown.Item eventKey={genre.id}  key={genre.id}  onSelect={genre => this.changeGenre(genre)}> {genre.name} </Dropdown.Item> ))}
-                          </Dropdown.Menu>
-                        </Dropdown> *//*}
-                                {/* </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav> */
-                <div className='col-12 anchor' id='trend'>
-                    <h1>Películas más populares</h1>
-                    <div className='row'>
-                        {ErrorSearch && (
-                            <div>
-                                <h3>No hay resultados con la busqueda de {inputMovie}</h3>
+        /* {/* <Dropdown key={genres.id}>
+<Dropdown.Toggle variant='danger' id='dropdown-basic'> Géneros </Dropdown.Toggle>
+<Dropdown.Menu> {genres.map(genre=> (
+ <Dropdown.Item eventKey={genre.id}  key={genre.id}  onSelect={genre => this.changeGenre(genre)}> {genre.name} </Dropdown.Item> ))}
+</Dropdown.Menu>
+</Dropdown> *//*}
+                                        {/* </li>
+                                    </ul>
+                                </div>
                             </div>
-
-                        )}
-                        {!ErrorSearch && props.movies.length <= 1 &&
-                            props.moviesDiscover.map((movie, index) => (
-                                <MovieCard
-                                    to={`/movie-info/${movie.id}`}
-                                    key={index}
-                                    title={movie.original_title}
-                                    image={`${url}${movie.poster_path}`}
-                                    vote_average={movie.vote_average}
-                                />
-                            ))}
-                        {!ErrorSearch && props.movies && props.movies[0].id !== '' &&
-                            props.movies.map((movie, index) => (
-                                <MovieCard
-                                    to={`/movie-info/${movie.id}`}
-                                    key={index}
-                                    title={movie.original_title}
-                                    image={`${url}${movie.poster_path}`}
-                                    vote_average={movie.vote_average}
-                                />
-                            ))
-                        }
-                    </div>
+                        </nav> */
+        <div className='col-12 anchor' id='trend'>
+            {/* <h1>Películas más populares</h1> */}
+            <div className="row custom-flex center">
+                <div className="input-field col-6 ">
+                    <h1 className="web-title"> Movies App</h1>
                 </div>
-               /* {/* <div className='col-12 anchor' id='trend'>
-                <h1>Películas más populares</h1>
-                <div className='row'>
-                    {!loading && trending.map(movie =><MovieRow movie ={movie} key={movie.id}/> )}
-                    {loading && <div className='col-12 text-center'> <p>Cargando información...</p> </div> }
-                    {!loading && !error && !trending.length &&  <div className='col-12 text-center'><h2>No hay información disponible.</h2> </div> }
-                    {!loading && error &&  <div className='col-12 text-center'> <h2>Ocurrió un error.</h2> </div>}
+                <div className="input-field col-6 custom-flex">
+                    <div className="input-field col-lg-3 center">
+                        {/* <i className="material-icons prefix">home</i> */}
+                        <input
+                            value={inputMovie}
+                            className="validate"
+                            id="email"
+                            type="email"
+                            onChange={updateInputMovie} />
+                        {/* <label data-error="wrong" data-success="right">Search</label> */}
+                    </div>
+                    {/* <div className="row">  */}
+                    <div className="input-field col-lg-2">
+                        <button className="btn waves-effect waves-light btn-sm search-button" onClick={search}>Search</button>
+                    </div>
+                    {/* </div> */}
                 </div>
             </div>
-          <Favs />     */
-            // </div>
-            /* <Footer />    */
+            <div className='row'>
+                {ErrorSearch && (
+                    <div>
+                        <h3>No hay resultados con la busqueda de {inputMovie}</h3>
+                    </div>
+
+                )}
+            </div>
+            <h1>Películas más populares</h1>
+            <div className='row'>
+                {props.movies.length <= 1 &&
+                    props.moviesDiscover.map((movie, index) => (
+                        <MovieCard
+                            to={`/movie-info/${movie.id}`}
+                            key={index}
+                            title={movie.original_title}
+                            image={`${url}${movie.poster_path}`}
+                            vote_average={movie.vote_average}
+                        />
+                    ))}
+                {props.movies && props.movies[0].id !== '' &&
+                    props.movies.map((movie, index) => (
+                        <MovieCard
+                            to={`/movie-info/${movie.id}`}
+                            key={index}
+                            title={movie.original_title}
+                            image={`${url}${movie.poster_path}`}
+                            vote_average={movie.vote_average}
+                        />
+                    ))
+                }
+            </div>
+        </div>
+        /* {/* <div className='col-12 anchor' id='trend'>
+         <h1>Películas más populares</h1>
+         <div className='row'>
+             {!loading && trending.map(movie =><MovieRow movie ={movie} key={movie.id}/> )}
+             {loading && <div className='col-12 text-center'> <p>Cargando información...</p> </div> }
+             {!loading && !error && !trending.length &&  <div className='col-12 text-center'><h2>No hay información disponible.</h2> </div> }
+             {!loading && error &&  <div className='col-12 text-center'> <h2>Ocurrió un error.</h2> </div>}
+         </div>
+     </div>
+   <Favs />     */
+        // </div>
+        /* <Footer />    */
         // </div>
     );
 }

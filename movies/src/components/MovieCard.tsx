@@ -21,7 +21,9 @@ const MovieCard: React.FC<IProps> = props => {
         //         <Link to={to}><Typography component="p" variant="h6" color='textPrimary'>{title}</Typography></Link>
         //     </CardContent>
         // </Card>
-        <div className="col-xs-6 col-sm-4 col-lg-3 col-xl-2 float-left text-center movierow" >
+
+        // col-xl-3 o col-xl-2
+        <div className="col-xs-6 col-sm-4 col-lg-3 col-xl-3 float-left text-center movierow" >
             <Link to={props.to}>
                 <div className="item">
                     <span className="notify-badge">{props.vote_average}</span>
@@ -31,7 +33,7 @@ const MovieCard: React.FC<IProps> = props => {
                     {/* </img> */}
                 </div>
                 <img className="img-thumbnail thumb" alt="poster" src={props.image} key={props.key} />
-                <h5 className="title-movie"> {props.title}</h5>
+                <h4 className="title-movie"> {props.title}</h4>
             </Link>
         </div>
     );

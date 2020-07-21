@@ -8,8 +8,11 @@
 }
 .notify-badge{
     position: absolute;
-    right: -58px;
-    top: -119px;
+    right: -63px;
+    top: -204px;
+    /* para 6 card */
+    /* right: -58px;
+    top: -119px; */ 
     background-color: black;
     /* background: rgb(23, 206, 181); */
     text-align: center;

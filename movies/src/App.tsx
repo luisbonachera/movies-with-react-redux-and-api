@@ -32,8 +32,9 @@ const App: React.FC<IProps> = props => {
             <AppNav />
             <Switch>
               {/* <Route path='/' component={AppNav} /> */}
-              <Route exact path='/' component={Home} />
-              <Route exact path='/movies' component={MoviesListContainer} />
+              {/* <Route exact path='/' component={Home} /> */}
+              {/* <Route exact path='/movies' component={MoviesListContainer} /> */}
+              <Route exact path='/' component={MoviesListContainer} />
               <Route exact path='/movie-info/:id_movie' component={MovieInfoContainer} />
               <Route exact path='/search' component={Search} />
 
