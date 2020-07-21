@@ -46,7 +46,7 @@ const AppNav: React.FC<IProps & IPropsGlobal> = props => {
     return (
         // <AppBar className={classes.NavColor} position="static">
         <>
-            <AppBar position="static">
+            {/* <AppBar position="static">
 
                 <Toolbar variant="dense">
                     <Grid>
@@ -55,8 +55,8 @@ const AppNav: React.FC<IProps & IPropsGlobal> = props => {
                                 MovieApp
                             </Typography>
                         </Link>
-                    </Grid>
-                    {/* <Grid>
+                    </Grid> */}
+            {/* <Grid>
                     <input
                         value={inputMovie}
                         className="validate"
@@ -65,23 +65,57 @@ const AppNav: React.FC<IProps & IPropsGlobal> = props => {
                         onChange={updateInputMovie} />
                     <label data-error="wrong" data-success="right">Name City</label>
                 </Grid> */}
-                    <Grid>
+            {/* <Grid>
                         <Link to="/movies" className="btn waves-effect waves-light col s12">
                             <img src={logo} width='20' />
-                        </Link>
-                        {/* <button className="btn waves-effect waves-light col s12" onClick={search}>Search</button> */}
-                    </Grid>
+                        </Link> */}
+            {/* <button className="btn waves-effect waves-light col s12" onClick={search}>Search</button> */}
+            {/* </Grid>
                 </Toolbar>
             </AppBar>
 
-            {props.isSearched && (<MoviesListContainer />)}
+            {props.isSearched && (<MoviesListContainer />)} */}
+            {/* <div className='Home'>
+                <div className='container-flex'> */}
+                    <nav className='navbar navbar-expand-lg navbar-expand-xl navbar-dark bg-dark fixed-top'>
+                        <div className='container'>
+                            <a className='navbar-brand' href='/#top'>React Movies</a>
+                            <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation'>
+                                <span className='navbar-toggler-icon'></span>
+                            </button>
+                            <div className='collapse navbar-collapse' id='navbarResponsive'>
+                                <ul className='navbar-nav ml-auto'>
+                                    <li className='nav-item active'>
+                                        <a className='nav-link' href='/#top'><i className='fas fa-home'></i> Inicio</a>
+                                    </li>
+                                    <li className='nav-item'>
+                                        <a className='nav-link' href='/#premiere'><i className='fas fa-ticket-alt'></i> Estrenos</a>
+                                    </li>
+                                    <li className='nav-item'>
+                                        <a className='nav-link' href='/#trend'><i className='fas fa-medal'></i> Más populares</a>
+                                    </li>
+                                    <li className='nav-item'>
+                                        <a className='nav-link' href='/#favs'><i className='fas fa-star'></i> Favoritas</a>
+                                    </li>
+                                    <li>
+                                        {/* <Dropdown key={genres.id}>
+                        <Dropdown.Toggle variant='danger' id='dropdown-basic'> Géneros </Dropdown.Toggle>
+                          <Dropdown.Menu> {genres.map(genre=> (
+                            <Dropdown.Item eventKey={genre.id}  key={genre.id}  onSelect={genre => this.changeGenre(genre)}> {genre.name} </Dropdown.Item> ))}
+                          </Dropdown.Menu>
+                        </Dropdown> */}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
         </>
     );
 }
 
 
 const mapStateToProps = (state: IGlobalState) => ({
-    movies: state.movies,
+                    movies: state.movies,
     isSearched: state.isSearched,
 
     // citiesDetails: state.citiesDetails,
@@ -89,7 +123,7 @@ const mapStateToProps = (state: IGlobalState) => ({
 });
 
 const mapDispathToProps = {
-    setMovies: actions.setMovies,
+                    setMovies: actions.setMovies,
     SetIsSearched: actions.SetIsSearched
     //   setCitiesDetails: actions.setCitiesDetails
 };

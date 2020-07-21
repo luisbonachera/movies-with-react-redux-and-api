@@ -19,7 +19,9 @@ const MoviesListContainer: React.FC<IProps & IPropsGlobal> = props => {
 
     React.useEffect(() => {
         // axios.get('https://api.themoviedb.org/3/search/movie?api_key=735a3154d1f2d1edc582718bfa70cce9&query=Spiderman')
-        axios.get('https://api.themoviedb.org/3/discover/movie?api_key=735a3154d1f2d1edc582718bfa70cce9&language=en-US')
+        // axios.get('https://api.themoviedb.org/3/discover/movie?api_key=735a3154d1f2d1edc582718bfa70cce9&language=en-US')
+        axios.get('https://api.themoviedb.org/3/movie/popular?api_key=735a3154d1f2d1edc582718bfa70cce9&language=en-US&page=1')
+
             .then(res => {
                 console.log(res);              
                 const movieData: IMovie[] = res.data.results;

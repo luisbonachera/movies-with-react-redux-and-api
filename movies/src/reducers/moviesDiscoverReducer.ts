@@ -7,6 +7,7 @@ const initialState: any = [{
     title: '',
     original_title: '',
     poster_path: '',
+    vote_average: 0,
 }]
 
 

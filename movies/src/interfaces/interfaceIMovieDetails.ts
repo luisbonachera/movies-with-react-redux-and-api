@@ -6,4 +6,6 @@ export interface IMovieDetails {
     homepage: string;
     overview: string;
     backdrop_path: string;
+    vote_average: number;
+
 }

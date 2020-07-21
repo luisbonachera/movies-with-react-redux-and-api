@@ -25,17 +25,23 @@ const App: React.FC<IProps> = props => {
   return (
     <BrowserRouter>
       {/* <div className="App"></div> */}
-      <AppNav />
+      {/* <AppNav /> */}
+      <div className="main">
+        <div className='Home'>
+          <div className='container-flex'>
+            <AppNav />
+            <Switch>
+              {/* <Route path='/' component={AppNav} /> */}
+              <Route exact path='/' component={Home} />
+              <Route exact path='/movies' component={MoviesListContainer} />
+              <Route exact path='/movie-info/:id_movie' component={MovieInfoContainer} />
+              <Route exact path='/search' component={Search} />
 
-      <Switch>
-        {/* <Route path='/' component={AppNav} /> */}
-        <Route exact path='/' component={Home} />
-        <Route exact path='/movies' component={MoviesListContainer} />
-        <Route exact path='/movie-info/:id_movie' component={MovieInfoContainer} />
-        <Route exact path='/search' component={Search} />
-
-        <Redirect to="/" />
-      </Switch>
+              <Redirect to="/" />
+            </Switch>
+          </div>
+        </div>
+      </div>
     </BrowserRouter>
   );
 }

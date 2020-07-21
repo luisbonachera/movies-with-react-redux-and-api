@@ -78,13 +78,14 @@ const List: React.FC<IProps & IPropsGlobal> = props => {
 
     const updateInputMovie = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputMovie(event.currentTarget.value);
+        setErrorSearch(false)
     }
 
     const search = () => {
 
         axios.get(`https://api.themoviedb.org/3/search/movie?api_key=735a3154d1f2d1edc582718bfa70cce9&query=${inputMovie}`)
             .then(movies => {
-                if (movies && movies.data && movies.data.results.lengh > 1) {
+                if (movies.data.results.length >= 1) {
                     console.log(movies.data.results);
                     // this.setState({movieData: movieData}); la primera es el state y la segunda es la const
                     setErrorSearch(false)
@@ -92,7 +93,7 @@ const List: React.FC<IProps & IPropsGlobal> = props => {
                     // setMoviesHooks(movies.data.results);
                     // setIstherMovies(true);
                 }
-                else{
+                else {
                     ///mostar no hay peliculas con esa busqueda
                     setErrorSearch(true)
                 }
@@ -102,88 +103,172 @@ const List: React.FC<IProps & IPropsGlobal> = props => {
     };
 
     let url = "https://image.tmdb.org/t/p/w300";
+    // `https://image.tmdb.org/t/p/w500${this.props.movie.poster_path}`
     // React.useEffect(() => { }, [isThereMovies]);
 
     return (
-        <Fragment>
-            <Grid
-                container
-                spacing={5}
-                direction="row"
-                justify="center"
-                alignItems="center">
-                <Grid item xs={12} sm={6}>
-                    <h3>Lista de Peliculas</h3>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
-                        </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </div>
-                </Grid>
+        // <Fragment>
+        //     <Grid
+        //         container
+        //         spacing={5}
+        //         direction="row"
+        //         justify="center"
+        //         alignItems="center">
+        //         <Grid item xs={12} sm={6}>
+        //             <h3>Lista de Peliculas</h3>
+        //         </Grid>
+        //         <Grid item xs={12} sm={6}>
+        //             <div className={classes.search}>
+        //                 <div className={classes.searchIcon}>
+        //                     <SearchIcon />
+        //                 </div>
+        //                 <InputBase
+        //                     placeholder="Search…"
+        //                     classes={{
+        //                         root: classes.inputRoot,
+        //                         input: classes.inputInput,
+        //                     }}
+        //                     inputProps={{ 'aria-label': 'search' }}
+        //                 />
+        //             </div>
+        //         </Grid>
 
-            </Grid>
-            <div className="container">
-                <div className="row">
-                    <h1> Lista de peliculas</h1>
-                </div>
-                <div className="row">
-                    <div className="input-field col-6 s6">
-                        <i className="material-icons prefix">home</i>
-                        <input
-                            value={inputMovie}
-                            className="validate"
-                            id="email"
-                            type="email"
-                            onChange={updateInputMovie} />
-                        <label data-error="wrong" data-success="right">Search</label>
-                    </div>
-                    <div className="row">
-                        <div className="input-field col s6">
-                            <button className="btn waves-effect waves-light col6 s12" onClick={search}>Search</button>
+        //     </Grid>
+        //     <div className="container">
+        //         <div className="row">
+        //             <h1> Lista de peliculas</h1>
+        //         </div>
+        //         <div className="row">
+        //             <div className="input-field col-6 s6">
+        //                 <i className="material-icons prefix">home</i>
+        //                 <input
+        //                     value={inputMovie}
+        //                     className="validate"
+        //                     id="email"
+        //                     type="email"
+        //                     onChange={updateInputMovie} />
+        //                 <label data-error="wrong" data-success="right">Search</label>
+        //             </div>
+        //             <div className="row">
+        //                 <div className="input-field col s6">
+        //                     <button className="btn waves-effect waves-light col6 s12" onClick={search}>Search</button>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+
+        //     {/* <Grid container justify="center"> */}
+        //     <div className='col-12 anchor' id='trend'>
+        //         <h1>Películas más populares</h1>
+        //         <div className='row'>
+        //             {ErrorSearch && (
+        //                 <div>
+        //                     <h3>No hay resultados con la busqueda de {inputMovie}</h3>
+        //                 </div>
+
+        //             )}
+        //             {!ErrorSearch && props.movies.length <= 1 &&
+        //                 props.moviesDiscover.map((movie, index) => (
+        //                     <MovieCard
+        //                         to={`/movie-info/${movie.id}`}
+        //                         key={index}
+        //                         title={movie.original_title}
+        //                         image={`${url}${movie.poster_path}`}
+        //                     />
+        //                 ))}
+        //             {!ErrorSearch && props.movies &&
+        //                 props.movies.map((movie, index) => (
+        //                     <MovieCard
+        //                         to={`/movie-info/${movie.id}`}
+        //                         key={index}
+        //                         title={movie.original_title}
+        //                         image={`${url}${movie.poster_path}`}
+        //                     />
+        //                 ))
+        //             }
+        //         </div>
+        //     </div>
+        //     {/* </Grid> */}
+        // </Fragment >
+        // <div className='Home'>
+        //     <div className='container-flex'>
+        //         <nav className='navbar navbar-expand-lg navbar-expand-xl navbar-dark bg-dark fixed-top'>
+        //             <div className='container'>
+        //                 <a className='navbar-brand' href='/#top'>React Movies</a>
+        //                 <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation'>
+        //                     <span className='navbar-toggler-icon'></span>
+        //                 </button>
+        //                 <div className='collapse navbar-collapse' id='navbarResponsive'>
+        //                     <ul className='navbar-nav ml-auto'>
+        //                         <li className='nav-item active'>
+        //                             <a className='nav-link' href='/#top'><i className='fas fa-home'></i> Inicio</a>
+        //                         </li>
+        //                         <li className='nav-item'>
+        //                             <a className='nav-link' href='/#premiere'><i className='fas fa-ticket-alt'></i> Estrenos</a>
+        //                         </li>
+        //                         <li className='nav-item'>
+        //                             <a className='nav-link' href='/#trend'><i className='fas fa-medal'></i> Más populares</a>
+        //                         </li>
+        //                         <li className='nav-item'>
+        //                             <a className='nav-link' href='/#favs'><i className='fas fa-star'></i> Favoritas</a>
+        //                         </li>
+        //                         <li>
+                                   /* {/* <Dropdown key={genres.id}>
+                        <Dropdown.Toggle variant='danger' id='dropdown-basic'> Géneros </Dropdown.Toggle>
+                          <Dropdown.Menu> {genres.map(genre=> (
+                            <Dropdown.Item eventKey={genre.id}  key={genre.id}  onSelect={genre => this.changeGenre(genre)}> {genre.name} </Dropdown.Item> ))}
+                          </Dropdown.Menu>
+                        </Dropdown> *//*}
+                                {/* </li>
+                            </ul>
                         </div>
                     </div>
+                </nav> */
+                <div className='col-12 anchor' id='trend'>
+                    <h1>Películas más populares</h1>
+                    <div className='row'>
+                        {ErrorSearch && (
+                            <div>
+                                <h3>No hay resultados con la busqueda de {inputMovie}</h3>
+                            </div>
+
+                        )}
+                        {!ErrorSearch && props.movies.length <= 1 &&
+                            props.moviesDiscover.map((movie, index) => (
+                                <MovieCard
+                                    to={`/movie-info/${movie.id}`}
+                                    key={index}
+                                    title={movie.original_title}
+                                    image={`${url}${movie.poster_path}`}
+                                    vote_average={movie.vote_average}
+                                />
+                            ))}
+                        {!ErrorSearch && props.movies && props.movies[0].id !== '' &&
+                            props.movies.map((movie, index) => (
+                                <MovieCard
+                                    to={`/movie-info/${movie.id}`}
+                                    key={index}
+                                    title={movie.original_title}
+                                    image={`${url}${movie.poster_path}`}
+                                    vote_average={movie.vote_average}
+                                />
+                            ))
+                        }
+                    </div>
+                </div>
+               /* {/* <div className='col-12 anchor' id='trend'>
+                <h1>Películas más populares</h1>
+                <div className='row'>
+                    {!loading && trending.map(movie =><MovieRow movie ={movie} key={movie.id}/> )}
+                    {loading && <div className='col-12 text-center'> <p>Cargando información...</p> </div> }
+                    {!loading && !error && !trending.length &&  <div className='col-12 text-center'><h2>No hay información disponible.</h2> </div> }
+                    {!loading && error &&  <div className='col-12 text-center'> <h2>Ocurrió un error.</h2> </div>}
                 </div>
             </div>
-
-            <Grid container justify="center">
-                {ErrorSearch && (
-                    <div>
-                        <h3>No hay resultados con esa busqueda</h3>
-                    </div>
-                        
-                )  
-                }
-                {props.movies.length <= 1 &&
-                    props.moviesDiscover.map((movie, index) => (
-                        <MovieCard
-                            to={`/movie-info/${movie.id}`}
-                            key={index}
-                            title={movie.original_title}
-                            image={`${url}${movie.poster_path}`}
-                        />
-                    ))}
-                {props.movies &&
-                    props.movies.map((movie, index) => (
-                        <MovieCard
-                            to={`/movie-info/${movie.id}`}
-                            key={index}
-                            title={movie.original_title}
-                            image={`${url}${movie.poster_path}`}
-                        />
-                    ))
-                }
-            </Grid>
-        </Fragment >
+          <Favs />     */
+            // </div>
+            /* <Footer />    */
+        // </div>
     );
 }
 
