@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import MovieDescription from '../components/MovieDescription';
-import AppNav from '../components/AppNav';
 
 import axios from 'axios';
 import { IMovie } from '../interfaces/interfaceIMovie';
 import { RouteComponentProps } from 'react-router-dom';
-import { render } from '@testing-library/react';
 import { IMovieDetails } from '../interfaces/interfaceIMovieDetails';
 import { IGlobalState } from '../reducers/reducers';
 import { connect } from 'react-redux';
@@ -78,11 +76,7 @@ const MovieInfoContainer: React.FC<IProps & IPropsGlobal & RouteComponentProps<{
             <>
                 {/* <AppNav /> */}
                 <MovieDescription
-                    movieImage={props.movieDetails ? `${process.env.REACT_APP_MOVIES_IMAGE_URL}${props.movieDetails.backdrop_path}` : ''}
-                    title={props.movieDetails.title}
-                    description={"hola"}
-                    homepage={props.movieDetails.homepage}
-                    overview={props.movieDetails.overview}
+                    movieImageUrl={props.movieDetails ? `${process.env.REACT_APP_MOVIES_IMAGE_POSTER_URL}/w500${props.movieDetails.poster_path}` : ''}
                 />
                 {/* <h1> MovieInfo</h1>
                 <p>ID: {match.params.movieIndex}</p> */}
@@ -106,5 +100,3 @@ export default connect(
     mapStateToProps,
     mapDispathToProps
 )(MovieInfoContainer);
-
-// export default MovieInfoContainer;

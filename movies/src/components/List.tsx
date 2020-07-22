@@ -86,7 +86,7 @@ const List: React.FC<IProps & IPropsGlobal> = props => {
     }
 
     const search = () => {
-
+        // https://api.themoviedb.org/p/original/m0ObOaJBerZ3Unc74l471ar8Iiy.jpg?api_key=735a3154d1f2d1edc582718bfa70cce9
         axios.get(`https://api.themoviedb.org/3/search/movie?api_key=735a3154d1f2d1edc582718bfa70cce9&query=${inputMovie}`)
             .then(movies => {
                 if (movies.data.results.length >= 1) {
@@ -149,9 +149,9 @@ const List: React.FC<IProps & IPropsGlobal> = props => {
                                     <MovieCard
                                         to={`/movie-info/${movie.id}`}
                                         key={index}
-                                        title={movie.original_title}
-                                        image={`${url}${movie.poster_path}`}
-                                        vote_average={movie.vote_average}
+                                        title={movie.title? movie.title : movie.original_title? movie.original_title : 'No tiene titulo'}
+                                        image={movie.poster_path ? `${url}${movie.poster_path}` : process.env.PUBLIC_URL + '/images/poster-movie-not-found-400x400.jpg'}
+                                        vote_average={movie.vote_average? movie.vote_average : 0}
                                     />
                                 ))
                             }
@@ -164,7 +164,7 @@ const List: React.FC<IProps & IPropsGlobal> = props => {
                 {ErrorSearch && (
                     <>
                         <div className='col-12 center'>
-                            <h3>No hay resultados con la busqueda de {inputMovie}</h3>
+                            <h4>No hay resultados con la busqueda de {inputMovie}</h4>
                         </div>
                         <div className="margin-botom-between-section">
 
@@ -182,7 +182,7 @@ const List: React.FC<IProps & IPropsGlobal> = props => {
                         <MovieCard
                             to={`/movie-info/${movie.id}`}
                             key={index}
-                            title={movie.original_title}
+                            title={movie.title? movie.title : movie.original_title? movie.original_title : 'No tiene titulo'}
                             image={`${url}${movie.poster_path}`}
                             vote_average={movie.vote_average}
                         />
@@ -204,7 +204,7 @@ const List: React.FC<IProps & IPropsGlobal> = props => {
                             <MovieCard
                                 to={`/movie-info/${movie.id}`}
                                 key={index}
-                                title={movie.original_title}
+                                title={movie.title? movie.title : movie.original_title? movie.original_title : 'No tiene titulo'}
                                 image={`${url}${movie.poster_path}`}
                                 vote_average={movie.vote_average}
                             />

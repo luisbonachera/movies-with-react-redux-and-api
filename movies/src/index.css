@@ -147,7 +147,19 @@ h1 {
   font-size: 16px;;
 }
 
+.margin-boton-h5 {
+  margin-bottom: 20px;
+}
 
+
+.runtime-movie, .container-movies-details{
+  margin-top: 20px;
+}
+
+.enlace-Movie-homepage{
+  font-size: 14px;
+  color: blue;
+}
   /* ---------- */
   /* body {
   margin: 0;

@@ -23,5 +23,27 @@
     padding:5px 10px;
     font-size:20px;
     text-shadow: none;
-
 }
+
+.notify-badge-details-1{
+    right: -4px;
+    top: -12px;
+    color: black;
+    background: none;
+    font-weight: bold;
+}
+
+.notify-badge-details-2{
+    right: 315px;
+    top: 83px;
+    background-color: #343a4091;
+}
+
+.title-movie-details-h1 {
+    padding-bottom: 0;
+    font-size: 3rem;
+}
+
+.icon-star{
+    color: yellow;
+    font-size: 34px;}
