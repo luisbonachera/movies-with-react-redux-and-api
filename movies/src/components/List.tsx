@@ -11,13 +11,17 @@ import * as actions from '../actions/actions';
 import { fade, makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
+import { IMovieDiscover } from '../interfaces/interfaceIMovieDiscover';
+import { IMoviePremiere } from '../interfaces/interfaceIMoviePremiere';
 
 
 interface IProps { };
 
 interface IPropsGlobal {
     movies: IMovie[];
-    moviesDiscover: IMovie[];
+    moviesDiscover: IMovieDiscover[];
+    moviesPremiere: IMoviePremiere[];
+    isHiddenSearched: boolean;
     setMovies: (movies: IMovie[]) => void;
 }
 
@@ -90,13 +94,14 @@ const List: React.FC<IProps & IPropsGlobal> = props => {
                     // this.setState({movieData: movieData}); la primera es el state y la segunda es la const
                     setErrorSearch(false)
                     props.setMovies(movies.data.results);
-                    setInputMovie("");
+                    // setInputMovie("");
                     // setMoviesHooks(movies.data.results);
                     // setIstherMovies(true);
                 }
                 else {
                     ///mostar no hay peliculas con esa busqueda
-                    setErrorSearch(true)
+                    props.setMovies(movies.data.results);
+                    setErrorSearch(true);
                 }
             }).catch(error => {
                 console.log(error);
@@ -108,159 +113,72 @@ const List: React.FC<IProps & IPropsGlobal> = props => {
     // React.useEffect(() => { }, [isThereMovies]);
 
     return (
-        // <Fragment>
-        //     <Grid
-        //         container
-        //         spacing={5}
-        //         direction="row"
-        //         justify="center"
-        //         alignItems="center">
-        //         <Grid item xs={12} sm={6}>
-        //             <h3>Lista de Peliculas</h3>
-        //         </Grid>
-        //         <Grid item xs={12} sm={6}>
-        //             <div className={classes.search}>
-        //                 <div className={classes.searchIcon}>
-        //                     <SearchIcon />
-        //                 </div>
-        //                 <InputBase
-        //                     placeholder="Search…"
-        //                     classes={{
-        //                         root: classes.inputRoot,
-        //                         input: classes.inputInput,
-        //                     }}
-        //                     inputProps={{ 'aria-label': 'search' }}
-        //                 />
-        //             </div>
-        //         </Grid>
-
-        //     </Grid>
-        //     <div className="container">
-        //         <div className="row">
-        //             <h1> Lista de peliculas</h1>
-        //         </div>
-        //         <div className="row">
-        //             <div className="input-field col-6 s6">
-        //                 <i className="material-icons prefix">home</i>
-        //                 <input
-        //                     value={inputMovie}
-        //                     className="validate"
-        //                     id="email"
-        //                     type="email"
-        //                     onChange={updateInputMovie} />
-        //                 <label data-error="wrong" data-success="right">Search</label>
-        //             </div>
-        //             <div className="row">
-        //                 <div className="input-field col s6">
-        //                     <button className="btn waves-effect waves-light col6 s12" onClick={search}>Search</button>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </div>
-
-        //     {/* <Grid container justify="center"> */}
-        //     <div className='col-12 anchor' id='trend'>
-        //         <h1>Películas más populares</h1>
-        //         <div className='row'>
-        //             {ErrorSearch && (
-        //                 <div>
-        //                     <h3>No hay resultados con la busqueda de {inputMovie}</h3>
-        //                 </div>
-
-        //             )}
-        //             {!ErrorSearch && props.movies.length <= 1 &&
-        //                 props.moviesDiscover.map((movie, index) => (
-        //                     <MovieCard
-        //                         to={`/movie-info/${movie.id}`}
-        //                         key={index}
-        //                         title={movie.original_title}
-        //                         image={`${url}${movie.poster_path}`}
-        //                     />
-        //                 ))}
-        //             {!ErrorSearch && props.movies &&
-        //                 props.movies.map((movie, index) => (
-        //                     <MovieCard
-        //                         to={`/movie-info/${movie.id}`}
-        //                         key={index}
-        //                         title={movie.original_title}
-        //                         image={`${url}${movie.poster_path}`}
-        //                     />
-        //                 ))
-        //             }
-        //         </div>
-        //     </div>
-        //     {/* </Grid> */}
-        // </Fragment >
-        // <div className='Home'>
-        //     <div className='container-flex'>
-        //         <nav className='navbar navbar-expand-lg navbar-expand-xl navbar-dark bg-dark fixed-top'>
-        //             <div className='container'>
-        //                 <a className='navbar-brand' href='/#top'>React Movies</a>
-        //                 <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation'>
-        //                     <span className='navbar-toggler-icon'></span>
-        //                 </button>
-        //                 <div className='collapse navbar-collapse' id='navbarResponsive'>
-        //                     <ul className='navbar-nav ml-auto'>
-        //                         <li className='nav-item active'>
-        //                             <a className='nav-link' href='/#top'><i className='fas fa-home'></i> Inicio</a>
-        //                         </li>
-        //                         <li className='nav-item'>
-        //                             <a className='nav-link' href='/#premiere'><i className='fas fa-ticket-alt'></i> Estrenos</a>
-        //                         </li>
-        //                         <li className='nav-item'>
-        //                             <a className='nav-link' href='/#trend'><i className='fas fa-medal'></i> Más populares</a>
-        //                         </li>
-        //                         <li className='nav-item'>
-        //                             <a className='nav-link' href='/#favs'><i className='fas fa-star'></i> Favoritas</a>
-        //                         </li>
-        //                         <li>
-        /* {/* <Dropdown key={genres.id}>
-<Dropdown.Toggle variant='danger' id='dropdown-basic'> Géneros </Dropdown.Toggle>
-<Dropdown.Menu> {genres.map(genre=> (
- <Dropdown.Item eventKey={genre.id}  key={genre.id}  onSelect={genre => this.changeGenre(genre)}> {genre.name} </Dropdown.Item> ))}
-</Dropdown.Menu>
-</Dropdown> *//*}
-                                        {/* </li>
-                                    </ul>
-                                </div>
+        <>
+            <div className='col-12 margen-title-section zIndex-contaioner-tittle' id='PrincipalPage'>
+                {/* <h1>Películas más populares</h1> */}
+                <div className="row custom-flex center" hidden={props.isHiddenSearched}>
+                    <div className="input-field col-6 ">
+                        <h1 className="web-title"> Movies App</h1>
+                    </div>
+                    <div className="input-field col-6 custom-flex">
+                        <div className="input-field col-lg-3 center">
+                            {/* <i className="material-icons prefix">home</i> */}
+                            <input
+                                value={inputMovie}
+                                className="validate"
+                                id="email"
+                                type="email"
+                                onChange={updateInputMovie} />
+                            {/* <label data-error="wrong" data-success="right">Search</label> */}
+                        </div>
+                        {/* <div className="row">  */}
+                        <div className="input-field col-lg-2 serach-button-container">
+                            <button className="btn waves-effect waves-light btn-sm search-button" onClick={search}>Buscar</button>
+                        </div>
+                        {/* </div> */}
+                    </div>
+                </div>
+                {props.movies && props.movies.length >= 1 && props.movies[0].id !== "" && (
+                    <div className='col-12 margen-title-section' id='moviesSearch'>
+                        <h1 >Peliculas relaciondas con {inputMovie}</h1>
+                        <div className='row'>
+                            <div className='col-12 text-left'>
                             </div>
-                        </nav> */
-        <div className='col-12 anchor' id='trend'>
-            {/* <h1>Películas más populares</h1> */}
-            <div className="row custom-flex center">
-                <div className="input-field col-6 ">
-                    <h1 className="web-title"> Movies App</h1>
-                </div>
-                <div className="input-field col-6 custom-flex">
-                    <div className="input-field col-lg-3 center">
-                        {/* <i className="material-icons prefix">home</i> */}
-                        <input
-                            value={inputMovie}
-                            className="validate"
-                            id="email"
-                            type="email"
-                            onChange={updateInputMovie} />
-                        {/* <label data-error="wrong" data-success="right">Search</label> */}
-                    </div>
-                    {/* <div className="row">  */}
-                    <div className="input-field col-lg-2">
-                        <button className="btn waves-effect waves-light btn-sm search-button" onClick={search}>Search</button>
-                    </div>
-                    {/* </div> */}
-                </div>
-            </div>
-            <div className='row'>
-                {ErrorSearch && (
-                    <div>
-                        <h3>No hay resultados con la busqueda de {inputMovie}</h3>
-                    </div>
+                            {props.movies && props.movies[0].id !== '' &&
+                                props.movies.map((movie, index) => (
+                                    <MovieCard
+                                        to={`/movie-info/${movie.id}`}
+                                        key={index}
+                                        title={movie.original_title}
+                                        image={`${url}${movie.poster_path}`}
+                                        vote_average={movie.vote_average}
+                                    />
+                                ))
+                            }
+                        </div>
+                        <div className="margin-botom-between-section">
 
+                        </div>
+                    </div>
                 )}
+                {ErrorSearch && (
+                    <>
+                        <div className='col-12 center'>
+                            <h3>No hay resultados con la busqueda de {inputMovie}</h3>
+                        </div>
+                        <div className="margin-botom-between-section">
+
+                        </div>
+                    </>
+                )}
+
             </div>
-            <h1>Películas más populares</h1>
-            <div className='row'>
-                {props.movies.length <= 1 &&
-                    props.moviesDiscover.map((movie, index) => (
+            <div className='col-12 anchor ' id='premiere'>
+                <h1 >Estrenos de 2020</h1>
+                <div className='row'>
+                    <div className='col-12 text-left'>
+                    </div>
+                    {props.moviesPremiere.map((movie, index) => (
                         <MovieCard
                             to={`/movie-info/${movie.id}`}
                             key={index}
@@ -269,20 +187,46 @@ const List: React.FC<IProps & IPropsGlobal> = props => {
                             vote_average={movie.vote_average}
                         />
                     ))}
-                {props.movies && props.movies[0].id !== '' &&
-                    props.movies.map((movie, index) => (
-                        <MovieCard
-                            to={`/movie-info/${movie.id}`}
-                            key={index}
-                            title={movie.original_title}
-                            image={`${url}${movie.poster_path}`}
-                            vote_average={movie.vote_average}
-                        />
-                    ))
-                }
+                    {/* {!loading && premiere.map(movie => <MovieRow movie ={movie} key={movie.id}/>)} */}
+                    {/* {loading && <div className='col-12 text-center'> <p>Cargando información...</p> </div> }
+                      {!loading && !error && !premiere.length && <div className='col-12 text-center'> <h2>No hay información disponible.</h2></div> }
+                      {!loading && error && <div className='col-12 text-center'> <h2>Ocurrió un error.</h2></div> } */}
+                </div>
+                <div className="margin-botom-between-section">
+
+                </div>
             </div>
-        </div>
-        /* {/* <div className='col-12 anchor' id='trend'>
+            <div className='col-12 anchor margen-title-section' id='trend'>
+                <h1>Películas más populares</h1>
+                <div className='row'>
+                    {props.moviesDiscover &&
+                        props.moviesDiscover.map((movie, index) => (
+                            <MovieCard
+                                to={`/movie-info/${movie.id}`}
+                                key={index}
+                                title={movie.original_title}
+                                image={`${url}${movie.poster_path}`}
+                                vote_average={movie.vote_average}
+                            />
+                        ))}
+                    {/* {props.movies && props.movies[0].id !== '' &&
+                        props.movies.map((movie, index) => (
+                            <MovieCard
+                                to={`/movie-info/${movie.id}`}
+                                key={index}
+                                title={movie.original_title}
+                                image={`${url}${movie.poster_path}`}
+                                vote_average={movie.vote_average}
+                            />
+                        ))
+                    } */}
+                </div>
+                <div className="margin-botom-between-section">
+
+                </div>
+                {/* meter un contenedor que de espacio entre seciones de peliculas----------------------------------------------------------------------------- */}
+            </div>
+            {/* <div className='col-12 anchor' id='trend'>
          <h1>Películas más populares</h1>
          <div className='row'>
              {!loading && trending.map(movie =><MovieRow movie ={movie} key={movie.id}/> )}
@@ -291,16 +235,20 @@ const List: React.FC<IProps & IPropsGlobal> = props => {
              {!loading && error &&  <div className='col-12 text-center'> <h2>Ocurrió un error.</h2> </div>}
          </div>
      </div>
-   <Favs />     */
-        // </div>
-        /* <Footer />    */
-        // </div>
+   <Favs />     
+        </div>
+        <Footer />    
+        </div>  */}
+        </>
     );
 }
 
 const mapStateToProps = (state: IGlobalState) => ({
     movies: state.movies,
     moviesDiscover: state.moviesDiscover,
+    moviesPremiere: state.moviesPremiere,
+    isHiddenSearched: state.isHiddenSearched,
+
 
     // citiesDetails: state.citiesDetails,
     // idCity: state.idCity

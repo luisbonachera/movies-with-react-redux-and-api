@@ -8,6 +8,8 @@
 }
 .notify-badge{
     position: absolute;
+    /* top: -8em;
+    right: -12.2em; */
     right: -63px;
     top: -204px;
     /* para 6 card */

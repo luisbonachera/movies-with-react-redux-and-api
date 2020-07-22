@@ -10,11 +10,10 @@ const initialState: any = [{
     vote_average: 0,
 }]
 
-
 export const moviesDiscoverReducer = (
-    state: IMovie[] = initialState,
+    state: IMovieDiscover[] = initialState,
     action: TAction
-): IMovie[] => {
+): IMovieDiscover[] => {
     if (action.type === "SET_MOVIES_DISCOVER") {
         return action.moviesDiscover;
     }

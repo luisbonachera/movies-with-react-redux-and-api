@@ -44,8 +44,8 @@ h1 {
 .anchor:before {
   display: block;
   content: " ";
-  margin-top: -50px;
-  height: 50px;
+  margin-top: -75px;
+  height: 75px;
   visibility: hidden;
 }
 
@@ -96,10 +96,20 @@ h1 {
   /* font-weight: bold; */
   color: white;
   background: #343a40;
+  margin-top: -0.2em;
 }
 
-.web-title { 
-padding: 15px;
+.serach-button-container {
+  margin-right: -6.2em;
+}
+
+/* .web-title-container {
+  margin-left: -100px;
+} */
+
+.web-title {
+  padding: 15px;
+  margin-left: -3.3em;
 }
 
 .custom-flex {
@@ -107,9 +117,39 @@ padding: 15px;
   align-items: center;
   justify-content: center;
 }
-/* ---------- */
 
-/* body {
+.margen-title-section {
+  margin-top: 20px;
+  ;
+}
+
+.zIndex-contaioner-tittle {
+  z-index: 1000;
+}
+
+.margin-botom-between-section {
+  margin-bottom: 100px;
+}
+
+.button-transparent {
+  color: transparent;
+  background-color: transparent;
+  padding: 0;
+  ;
+}
+
+.container-title-navbar{
+  font-size: 30px;
+  padding: 0;
+}
+
+.icon-container-navbar{
+  font-size: 16px;;
+}
+
+
+  /* ---------- */
+  /* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

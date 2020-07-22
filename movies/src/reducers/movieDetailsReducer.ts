@@ -18,7 +18,7 @@ export const movieDetailsReducer = (
     state: IMovieDetails = initialState,
     action: TAction
 ): IMovieDetails => {
-    if (action.type === "SET_MOVIEDETAILS") {
+    if (action.type === "SET_MOVIE_DETAILS") {
         return action.movieDetails;
     }
 
