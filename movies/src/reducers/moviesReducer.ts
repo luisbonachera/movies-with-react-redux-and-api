@@ -22,7 +22,6 @@ const initialState: IMovie[] = [{
 
 
 export const moviesReducer = (
-    // state: ICity[] = initialState, //esto es sin el archivo cities.json
     state: IMovie[] = initialState,
     action: TAction
 ): IMovie[] => {

@@ -10,7 +10,7 @@ export interface IMovie {
     runtime: number;
     adult: boolean;
     video: boolean;
-    genre:[ {id: number, name: string}];
+    genre: [{ id: number, name: string }];
     data_release: string;
     popularity: number;
     homepage: string;
