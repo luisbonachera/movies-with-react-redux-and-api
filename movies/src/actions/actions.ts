@@ -5,7 +5,6 @@ import { IMovieDetails } from "../interfaces/interfaceIMovieDetails";
 import { IMovieDiscover } from "../interfaces/interfaceIMovieDiscover";
 import { IMoviePremiere } from "../interfaces/interfaceIMoviePremiere";
 
-
 export const setMoviesDiscover: ActionCreator<TAction> = (moviesDiscover: IMovieDiscover[]) => ({
     type: "SET_MOVIES_DISCOVER",
     moviesDiscover: moviesDiscover
